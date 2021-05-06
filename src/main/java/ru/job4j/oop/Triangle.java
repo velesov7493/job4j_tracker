@@ -10,19 +10,16 @@ public class Triangle {
     private double ac;
     private double bc;
 
-    public Triangle(Point first, Point second, Point third) throws IllegalArgumentException {
+    public Triangle(Point first, Point second, Point third) {
         a = first;
         b = second;
         c = third;
-        if (!exist()) {
-            throw new IllegalArgumentException("По указанным точкам нельзя построить треугольник, потому что все три точки лежат на одной прямой.");
-        }
-    }
-
-    public boolean exist() {
         ab = a.distance(b);
         ac = a.distance(c);
         bc = b.distance(c);
+    }
+
+    public boolean exist() {
         return ab + ac > bc && ac + bc > ab && bc + ab > ac;
     }
 
@@ -31,6 +28,9 @@ public class Triangle {
     }
 
     public double area() {
+        if (!exist()) {
+            return -1;
+        }
         double p = halfPerimeter();
         return Math.sqrt(p * (p - ab) * (p - ac) * (p - bc));
     }

@@ -9,7 +9,6 @@ public class Point {
     public Point(int px, int py) {
         x = px;
         y = py;
-        z = 0;
     }
 
     public Point(int px, int py, int pz) {
