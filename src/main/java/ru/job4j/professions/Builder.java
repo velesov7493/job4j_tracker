@@ -1,9 +1,17 @@
-package ru.job4j.oop;
+package ru.job4j.professions;
+
+import java.util.Date;
 
 public class Builder extends Ingineer {
 
     private String currentTask;
     private int workersCount;
+
+    public Builder(String aName, String aSurname, String aEducation, Date aBirthday, Company aCompany, Project aCurrentProject, String aCurrentTask, int aWorkersCount) {
+        super(aName, aSurname, aEducation, aBirthday, aCompany, aCurrentProject);
+        currentTask = aCurrentTask;
+        workersCount = aWorkersCount;
+    }
 
     public void createDocumentation(Project buildingProject) {}
 

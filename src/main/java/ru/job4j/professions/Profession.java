@@ -1,4 +1,4 @@
-package ru.job4j.oop;
+package ru.job4j.professions;
 
 import java.util.Date;
 
@@ -8,6 +8,13 @@ public class Profession {
     private String surname;
     private String education;
     private Date birthday;
+
+    public Profession(String aName, String aSurname, String aEducation, Date aBirthday) {
+        name = aName;
+        surname = aSurname;
+        education = aEducation;
+        birthday = aBirthday;
+    }
 
     public String getName() {
         return name;

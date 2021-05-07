@@ -1,8 +1,15 @@
-package ru.job4j.oop;
+package ru.job4j.professions;
+
+import java.util.Date;
 
 public class Doctor extends Profession {
 
     private int[] workDays;
+
+    public Doctor(String aName, String aSurname, String aEducation, Date aBirthday, int[] aWorkDays) {
+        super(aName, aSurname, aEducation, aBirthday);
+        workDays = aWorkDays;
+    }
 
     public Diagnosis heal(Pacient pacient, Diagnosis previousDiagnosis) {
         return new Diagnosis();

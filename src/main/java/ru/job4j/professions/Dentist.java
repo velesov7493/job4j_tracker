@@ -1,14 +1,15 @@
-package ru.job4j.oop;
+package ru.job4j.professions;
+
+import java.util.Date;
 
 public class Dentist extends Doctor {
 
-    public static enum ToothType {
-        Ceramic,
-        Gold,
-        Silver
-    }
-
     private boolean privatePractice;
+
+    public Dentist(String aName, String aSurname, String aEducation, Date aBirthday, int[] aWorkDays, boolean aPrivatePractice) {
+        super(aName, aSurname, aEducation, aBirthday, aWorkDays);
+        privatePractice = aPrivatePractice;
+    }
 
     public void pullOutTooth(Pacient pacient) {}
     public void insertTooth(Pacient pacient, ToothType toothType) {}
