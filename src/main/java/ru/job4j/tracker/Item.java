@@ -4,6 +4,17 @@ public class Item {
     private int id;
     private String name;
 
+    public Item() {}
+
+    public Item(String aName) {
+        name = aName;
+    }
+
+    public Item(int aId, String aName) {
+        id = aId;
+        name = aName;
+    }
+
     public int getId() {
         return id;
     }
