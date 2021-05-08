@@ -14,6 +14,7 @@ public class Item {
 
     public Item(String aName) {
         name = aName;
+        created = LocalDateTime.now();
     }
 
     public Item(int aId, String aName) {

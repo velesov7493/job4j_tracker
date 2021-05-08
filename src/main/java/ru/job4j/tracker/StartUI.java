@@ -5,9 +5,10 @@ import java.time.format.DateTimeFormatter;
 public class StartUI {
 
     public static void main(String[] args) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
-        Item item1 = new Item();
-        String dateTimeStr = item1.getCreated().format(formatter);
-        System.out.println("Время создания объекта item1: " + dateTimeStr);
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        Tracker tracker = new Tracker();
+        tracker.add(new Item("Тестовая заявка"));
+        Item founded = tracker.findById(1);
+        System.out.println("Найдена заявка: \""+founded.getName()+"\" от "+founded.getCreated().format(f));
     }
 }
