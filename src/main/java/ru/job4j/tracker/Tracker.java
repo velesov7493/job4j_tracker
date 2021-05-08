@@ -54,4 +54,21 @@ public class Tracker {
         items[index] = toItem;
         return true;
     }
+
+    public boolean delete(int id) {
+        int index = indexOf(id);
+        if (index < 0) {
+            return false;
+        }
+        int i = size - 1;
+        if (index < i) {
+            System.arraycopy(
+                    items, index + 1,
+                    items, index, size - index
+            );
+        }
+        items[i] = null;
+        size--;
+        return true;
+    }
 }
