@@ -1,13 +1,11 @@
 package ru.job4j.professions;
 
-import java.util.Date;
-
 public class Doctor extends Profession {
 
     private int[] workDays;
 
-    public Doctor(String aName, String aSurname, String aEducation, Date aBirthday, int[] aWorkDays) {
-        super(aName, aSurname, aEducation, aBirthday);
+    public Doctor(int[] aWorkDays) {
+        super();
         workDays = aWorkDays;
     }
 

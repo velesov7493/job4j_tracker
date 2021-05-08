@@ -39,7 +39,11 @@ public class Item {
         this.name = name;
     }
 
-    public LocalDateTime getCreated() { return created; }
+    public LocalDateTime getCreated() {
+        return created;
+    }
 
-    public void setCreated(LocalDateTime created) { this.created = created; }
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
+    }
 }

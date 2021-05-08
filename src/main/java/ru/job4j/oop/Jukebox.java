@@ -4,7 +4,7 @@ public class Jukebox {
 
     public void music(int position) {
         switch (position) {
-            case 1: {
+            case 1:
                 System.out.println("Пусть бегут неуклюже,");
                 System.out.println("Пешеходы по лужам,");
                 System.out.println("А вода по асфальту рекой.");
@@ -37,8 +37,7 @@ public class Jukebox {
                 System.out.println("Только раз в году.");
                 System.out.println();
                 break;
-            }
-            case 2: {
+            case 2:
                 System.out.println("Спят усталые игрушки, книжки спят.");
                 System.out.println("Одеяла и подушки ждут ребят.");
                 System.out.println("Даже сказка спать ложится,");
@@ -68,11 +67,9 @@ public class Jukebox {
                 System.out.println("\t\t\t\tБаю-бай.");
                 System.out.println();
                 break;
-            }
-            default: {
+            default:
                 System.out.println("Песня не найдена");
                 System.out.println();
-            }
         }
     }
 

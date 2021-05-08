@@ -7,13 +7,16 @@ public class Builder extends Ingineer {
     private String currentTask;
     private int workersCount;
 
-    public Builder(String aName, String aSurname, String aEducation, Date aBirthday, Company aCompany, Project aCurrentProject, String aCurrentTask, int aWorkersCount) {
-        super(aName, aSurname, aEducation, aBirthday, aCompany, aCurrentProject);
+    public Builder(
+            Company aCompany, Project aCurrentProject,
+            String aCurrentTask, int aWorkersCount
+    ) {
+        super(aCompany, aCurrentProject);
         currentTask = aCurrentTask;
         workersCount = aWorkersCount;
     }
 
-    public void createDocumentation(Project buildingProject) {}
+    public void createDocumentation(Project buildingProject) { }
 
     public boolean approveConstruction(Project buildingProject) {
         return true;

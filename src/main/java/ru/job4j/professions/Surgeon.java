@@ -6,8 +6,8 @@ public class Surgeon extends Doctor {
 
     private String category;
 
-    public Surgeon(String aName, String aSurname, String aEducation, Date aBirthday, int[] aWorkDays, String aCategory) {
-        super(aName, aSurname, aEducation, aBirthday, aWorkDays);
+    public Surgeon(int[] aWorkDays, String aCategory) {
+        super(aWorkDays);
         category = aCategory;
     }
 

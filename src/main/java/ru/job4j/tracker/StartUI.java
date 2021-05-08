@@ -9,6 +9,10 @@ public class StartUI {
         Tracker tracker = new Tracker();
         tracker.add(new Item("Тестовая заявка"));
         Item founded = tracker.findById(1);
-        System.out.println("Найдена заявка: \""+founded.getName()+"\" от "+founded.getCreated().format(f));
+        System.out.println(
+                "Найдена заявка: \""
+                + founded.getName()
+                + "\" от " + founded.getCreated().format(f)
+        );
     }
 }

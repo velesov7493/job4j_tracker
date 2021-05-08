@@ -9,12 +9,7 @@ public class Profession {
     private String education;
     private Date birthday;
 
-    public Profession(String aName, String aSurname, String aEducation, Date aBirthday) {
-        name = aName;
-        surname = aSurname;
-        education = aEducation;
-        birthday = aBirthday;
-    }
+    public Profession() { }
 
     public String getName() {
         return name;

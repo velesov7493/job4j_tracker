@@ -6,8 +6,8 @@ public class Programmer extends Ingineer {
 
     private SkillLevel level;
 
-    public Programmer(String aName, String aSurname, String aEducation, Date aBirthday, Company aCompany, Project aCurrentProject, SkillLevel aLevel) {
-        super(aName, aSurname, aEducation, aBirthday, aCompany, aCurrentProject);
+    public Programmer(Company aCompany, Project aCurrentProject, SkillLevel aLevel) {
+        super(aCompany, aCurrentProject);
         level = aLevel;
     }
 

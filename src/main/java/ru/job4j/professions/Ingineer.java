@@ -7,15 +7,15 @@ public class Ingineer extends Profession {
     private Company company;
     private Project currentProject;
 
-    public Ingineer(String aName, String aSurname, String aEducation, Date aBirthday, Company aCompany, Project aCurrentProject) {
-        super(aName, aSurname, aEducation, aBirthday);
+    public Ingineer(Company aCompany, Project aCurrentProject) {
+        super();
         company = aCompany;
         currentProject = aCurrentProject;
     }
 
-    public void work() {}
+    public void work() { }
 
-    public void workOvertime(Project overtimeProject) {}
+    public void workOvertime(Project overtimeProject) { }
 
     public Company getCompany() {
         return company;

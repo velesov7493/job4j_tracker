@@ -30,14 +30,14 @@ public class Tracker {
     }
 
     public Item[] findByName(String key) {
-        Item[] result = new Item[100];
+        Item[] result = new Item[size];
         int count = 0;
         for (int i = 0; i < size; i++) {
             if (key.equals(items[i].getName())) {
                 result[count++] = items[i];
             }
         }
-        return Arrays.copyOf(result,count);
+        return Arrays.copyOf(result, count);
     }
 
     public Item findById(int id) {
@@ -47,7 +47,9 @@ public class Tracker {
 
     public boolean replace(int id, Item toItem) {
         int index = indexOf(id);
-        if (index < 0) { return false; }
+        if (index < 0) {
+            return false;
+        }
         toItem.setId(id);
         items[index] = toItem;
         return true;
