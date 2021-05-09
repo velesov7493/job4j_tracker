@@ -32,14 +32,18 @@ public class StartUI {
         System.out.print("Введите имя заявки : ");
         String name = input.nextLine();
         Item item = new Item(name);
-        tracker.add(item);
-        System.out.println("Заявка добавлена.");
+        item = tracker.add(item);
+        System.out.println("Добавленная заявка: " + item);
     }
 
     private void cmdShowAllItems() {
         System.out.println("=== Все заявки ====");
         Item[] items = tracker.findAll();
-        for (Item entry: items) {
+        if (items.length == 0) {
+            System.out.println("Еще нет ни одной заявки.");
+            return;
+        }
+        for (Item entry : items) {
             System.out.println(entry);
         }
     }
@@ -90,7 +94,7 @@ public class StartUI {
             System.out.println("Ничего не найдено.");
             return;
         }
-        for (Item entry: items) {
+        for (Item entry : items) {
             System.out.println(entry);
         }
     }
