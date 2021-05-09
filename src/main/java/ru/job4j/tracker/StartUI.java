@@ -40,7 +40,7 @@ public class StartUI {
         System.out.println("=== Все заявки ====");
         Item[] items = tracker.findAll();
         for (Item entry: items) {
-            System.out.println(entry.toString());
+            System.out.println(entry);
         }
     }
 
