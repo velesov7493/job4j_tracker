@@ -15,15 +15,16 @@ public class StartUI {
     }
 
     private void cmdShowMenu() {
+        String[] menu = {
+                "Показать меню", "Добавить заявку",
+                "Показать все заявки", "Редактировать заявку",
+                "Удалить заявку", "Найти заявку по id",
+                "Найти заявки по имени", "Выход"
+        };
         System.out.println("Меню:");
-        System.out.println("1. Показать меню");
-        System.out.println("2. Добавить заявку");
-        System.out.println("3. Показать все заявки");
-        System.out.println("4. Редактировать заявку");
-        System.out.println("5. Удалить заявку");
-        System.out.println("6. Найти заявку по id");
-        System.out.println("7. Найти заявки по имени");
-        System.out.println("8. Выход");
+        for (int i = 0; i < menu.length; i++) {
+            System.out.println((i + 1) + ". " + menu[i]);
+        }
     }
 
     private void cmdAddItem() {
@@ -46,7 +47,7 @@ public class StartUI {
     private void cmdEditItem() {
         System.out.println("=== Редактирование заявки ====");
         System.out.print("Введите номер заявки : ");
-        int itemId = Integer.valueOf(input.nextLine());
+        int itemId = Integer.parseInt(input.nextLine());
         System.out.print("Введите новое имя заявки : ");
         String itemName = input.nextLine();
         Item item = new Item(itemName);
@@ -60,7 +61,7 @@ public class StartUI {
     private void cmdDeleteItem() {
         System.out.println("=== Удаление заявки ====");
         System.out.print("Введите номер заявки : ");
-        int itemId = Integer.valueOf(input.nextLine());
+        int itemId = Integer.parseInt(input.nextLine());
         if (tracker.delete(itemId)) {
             System.out.println("Заявка успешно удалена.");
         } else {
@@ -71,7 +72,7 @@ public class StartUI {
     private void cmdFindItemById() {
         System.out.println("=== Поиск заявки по номеру (id) ====");
         System.out.print("Введите номер заявки : ");
-        int itemId = Integer.valueOf(input.nextLine());
+        int itemId = Integer.parseInt(input.nextLine());
         Item founded = tracker.findById(itemId);
         if (founded != null) {
             System.out.println(founded);
@@ -96,32 +97,15 @@ public class StartUI {
 
     private void processCommand(int cmd) {
         switch (cmd) {
-            case 1:
-                cmdShowMenu();
-                break;
-            case 2:
-                cmdAddItem();
-                break;
-            case 3:
-                cmdShowAllItems();
-                break;
-            case 4:
-                cmdEditItem();
-                break;
-            case 5:
-                cmdDeleteItem();
-                break;
-            case 6:
-                cmdFindItemById();
-                break;
-            case 7:
-                cmdFindItemByName();
-                break;
-            case 8:
-                System.out.print("Выключаюсь...");
-                break;
-            default:
-                System.out.println("Неизвестная команда.");
+            case 1 -> cmdShowMenu();
+            case 2 -> cmdAddItem();
+            case 3 -> cmdShowAllItems();
+            case 4 -> cmdEditItem();
+            case 5 -> cmdDeleteItem();
+            case 6 -> cmdFindItemById();
+            case 7 -> cmdFindItemByName();
+            case 8 -> System.out.print("Выключаюсь...");
+            default -> System.out.println("Неизвестная команда.");
         }
     }
 
@@ -130,7 +114,7 @@ public class StartUI {
         cmdShowMenu();
         while (command != 8) {
             System.out.print("Ваш выбор: ");
-            command = Integer.valueOf(input.nextLine());
+            command = Integer.parseInt(input.nextLine());
             processCommand(command);
         }
     }
