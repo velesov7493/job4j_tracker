@@ -106,4 +106,62 @@ public class StartUITest {
         Item deleted = tracker.findById(item.getId());
         assertNull(deleted);
     }
+
+    @Test
+    public void whenUiShowAllItems() {
+        Tracker tracker = new Tracker();
+        Item item1 = tracker.add(new Item("Проверка StartUI"));
+        Item item2 = tracker.add(new Item("Тест StartUI"));
+        Input in = new StubInput(
+                new String[] {"1", "2"}
+        );
+        Output output = new StubOutput();
+        UserAction[] actions = {
+                new ShowAllItemsAction(output, tracker),
+                new ExitAction()
+        };
+        StartUI ui = new StartUI(in, output, tracker, actions);
+        ui.execute();
+        String expected = item1.toString() + System.lineSeparator() + item2.toString();
+        String out = output.toString();
+        assertTrue(out.contains(expected));
+    }
+
+    @Test
+    public void whenUiFindItemsByName() {
+        Tracker tracker = new Tracker();
+        Item item1 = tracker.add(new Item("Проверка StartUI"));
+        tracker.add(new Item("Тест StartUI"));
+        Input in = new StubInput(
+                new String[] {"1", "Проверка StartUI", "2"}
+        );
+        Output output = new StubOutput();
+        UserAction[] actions = {
+                new FindItemsByNameAction(in, output, tracker),
+                new ExitAction()
+        };
+        StartUI ui = new StartUI(in, output, tracker, actions);
+        ui.execute();
+        String out = output.toString();
+        assertTrue(out.contains(item1.toString()));
+    }
+
+    @Test
+    public void whenUiFindItemById() {
+        Tracker tracker = new Tracker();
+        tracker.add(new Item("item1"));
+        Item item2 = tracker.add(new Item("item2"));
+        Input in = new StubInput(
+                new String[] {"1", String.valueOf(item2.getId()), "2"}
+        );
+        Output output = new StubOutput();
+        UserAction[] actions = {
+                new FindItemByIdAction(in, output, tracker),
+                new ExitAction()
+        };
+        StartUI ui = new StartUI(in, output, tracker, actions);
+        ui.execute();
+        String out = output.toString();
+        assertTrue(out.contains(item2.toString()));
+    }
 }

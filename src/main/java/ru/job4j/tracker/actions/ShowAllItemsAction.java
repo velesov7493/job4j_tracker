@@ -28,7 +28,7 @@ public class ShowAllItemsAction implements UserAction {
             return false;
         }
         for (Item entry : items) {
-            System.out.println(entry);
+            output.println(entry);
         }
         return false;
     }
