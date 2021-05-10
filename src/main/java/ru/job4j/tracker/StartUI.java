@@ -19,7 +19,8 @@ public class StartUI {
                 new ReplaceItemAction(),
                 new DeleteItemAction(),
                 new FindItemByIdAction(),
-                new FindItemsByNameAction()
+                new FindItemsByNameAction(),
+                new ExitAction()
         };
     }
 
@@ -31,22 +32,25 @@ public class StartUI {
     }
 
     private boolean processCommand(int cmd) {
-        boolean run = cmd >= 1 && cmd <= actions.length;
-        if (run) {
-            actions[cmd - 1].execute(input, tracker);
+        boolean exit = false;
+        if (cmd >= 1 && cmd <= actions.length) {
+            exit = actions[cmd - 1].execute(input, tracker);
         } else {
+            System.out.println("Невыполнимая команда");
+        }
+        if (exit) {
             System.out.println("Выключаюсь...");
         }
-        return run;
+        return exit;
     }
 
     public void execute() {
         int command;
-        boolean loop = true;
+        boolean exit = false;
         cmdShowMenu();
-        while (loop) {
+        while (!exit) {
             command = input.askInt("Жду команды: ");
-            loop = processCommand(command);
+            exit = processCommand(command);
         }
     }
 

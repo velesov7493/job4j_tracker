@@ -18,6 +18,6 @@ public class AddItemAction implements UserAction {
         Item item = new Item(name);
         item = tracker.add(item);
         System.out.println("Добавленная заявка: " + item);
-        return true;
+        return false;
     }
 }

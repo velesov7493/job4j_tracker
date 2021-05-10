@@ -13,16 +13,14 @@ public class FindItemByIdAction implements UserAction {
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        boolean result = false;
         System.out.println("=== Поиск заявки по номеру (id) ====");
         int itemId = input.askInt("Введите номер заявки : ");
         Item founded = tracker.findById(itemId);
         if (founded != null) {
             System.out.println(founded);
-            result = true;
         } else {
             System.out.println("Заявка №" + itemId + " не найдена.");
         }
-        return result;
+        return false;
     }
 }

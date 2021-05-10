@@ -23,6 +23,6 @@ public class FindItemsByNameAction implements UserAction {
         for (Item entry : items) {
             System.out.println(entry);
         }
-        return true;
+        return false;
     }
 }
