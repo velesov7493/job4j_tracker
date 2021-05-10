@@ -10,17 +10,17 @@ public class StartUI {
     private Tracker tracker;
     private UserAction[] actions;
 
-    public StartUI(Input aInput, Tracker aTracker) {
+    public StartUI(Input aInput, Tracker aTracker, UserAction[] aActions) {
         input = aInput;
         tracker = aTracker;
-        actions = new UserAction[] {
-                new AddItemAction(),
-                new ShowAllItemsAction(),
-                new ReplaceItemAction(),
-                new DeleteItemAction(),
-                new FindItemByIdAction(),
-                new FindItemsByNameAction(),
-                new ExitAction()
+        actions = aActions != null ? aActions : new UserAction[] {
+            new AddItemAction(),
+            new ShowAllItemsAction(),
+            new ReplaceItemAction(),
+            new DeleteItemAction(),
+            new FindItemByIdAction(),
+            new FindItemsByNameAction(),
+            new ExitAction()
         };
     }
 
@@ -55,7 +55,7 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-        instance = new StartUI(new ConsoleInput(), new Tracker());
+        instance = new StartUI(new ConsoleInput(), new Tracker(), null);
         instance.execute();
     }
 }
