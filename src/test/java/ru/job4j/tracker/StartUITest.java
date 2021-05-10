@@ -1,6 +1,9 @@
 package ru.job4j.tracker;
 
 import org.junit.Test;
+import ru.job4j.tracker.actions.AddItemAction;
+import ru.job4j.tracker.actions.ReplaceItemAction;
+import ru.job4j.tracker.actions.UserAction;
 
 import static org.junit.Assert.*;
 
@@ -11,8 +14,8 @@ public class StartUITest {
         String[] answers = {"Fix PC"};
         Input input = new StubInput(answers);
         Tracker tracker = new Tracker();
-        StartUI ui = new StartUI(input, tracker);
-        ui.cmdAddItem();
+        UserAction addItem = new AddItemAction();
+        addItem.execute(input, tracker);
         Item created = tracker.findAll()[0];
         String expected = "Fix PC";
         assertEquals(expected, created.getName());
@@ -28,8 +31,9 @@ public class StartUITest {
                 String.valueOf(item.getId()),
                 expected
         };
-        StartUI ui = new StartUI(new StubInput(answers), tracker);
-        ui.cmdEditItem();
+        Input input = new StubInput(answers);
+        UserAction replaceItem = new ReplaceItemAction();
+        replaceItem.execute(input, tracker);
         Item replaced = tracker.findById(item.getId());
         assertEquals(expected, replaced.getName());
     }
@@ -42,8 +46,9 @@ public class StartUITest {
         String[] answers = {
                 String.valueOf(item.getId())
         };
-        StartUI ui = new StartUI(new StubInput(answers), tracker);
-        ui.cmdDeleteItem();
+        Input input = new StubInput(answers);
+        UserAction deleteItem = new ReplaceItemAction();
+        deleteItem.execute(input, tracker);
         Item deleted = tracker.findById(item.getId());
         assertNull(deleted);
     }
