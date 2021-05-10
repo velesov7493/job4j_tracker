@@ -2,6 +2,7 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 import ru.job4j.tracker.actions.AddItemAction;
+import ru.job4j.tracker.actions.DeleteItemAction;
 import ru.job4j.tracker.actions.ReplaceItemAction;
 import ru.job4j.tracker.actions.UserAction;
 
@@ -47,7 +48,7 @@ public class StartUITest {
                 String.valueOf(item.getId())
         };
         Input input = new StubInput(answers);
-        UserAction deleteItem = new ReplaceItemAction();
+        UserAction deleteItem = new DeleteItemAction();
         deleteItem.execute(input, tracker);
         Item deleted = tracker.findById(item.getId());
         assertNull(deleted);
