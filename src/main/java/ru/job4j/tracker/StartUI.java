@@ -7,7 +7,7 @@ public class StartUI {
     private Input input;
     private Tracker tracker;
 
-    private StartUI(Input aInput, Tracker aTracker) {
+    public StartUI(Input aInput, Tracker aTracker) {
         input = aInput;
         tracker = aTracker;
     }
@@ -25,7 +25,7 @@ public class StartUI {
         }
     }
 
-    private void cmdAddItem() {
+    public void cmdAddItem() {
         System.out.println("=== Создание новой заявки ====");
         String name = input.askStr("Введите имя заявки : ");
         Item item = new Item(name);
@@ -33,7 +33,7 @@ public class StartUI {
         System.out.println("Добавленная заявка: " + item);
     }
 
-    private void cmdShowAllItems() {
+    public void cmdShowAllItems() {
         System.out.println("=== Все заявки ====");
         Item[] items = tracker.findAll();
         if (items.length == 0) {
@@ -45,7 +45,7 @@ public class StartUI {
         }
     }
 
-    private void cmdEditItem() {
+    public void cmdEditItem() {
         System.out.println("=== Редактирование заявки ====");
         int itemId = input.askInt("Введите номер заявки : ");
         String itemName = input.askStr("Введите новое имя заявки : ");
@@ -57,7 +57,7 @@ public class StartUI {
         }
     }
 
-    private void cmdDeleteItem() {
+    public void cmdDeleteItem() {
         System.out.println("=== Удаление заявки ====");
         int itemId = input.askInt("Введите номер заявки : ");
         if (tracker.delete(itemId)) {
@@ -67,7 +67,7 @@ public class StartUI {
         }
     }
 
-    private void cmdFindItemById() {
+    public void cmdFindItemById() {
         System.out.println("=== Поиск заявки по номеру (id) ====");
         int itemId = input.askInt("Введите номер заявки : ");
         Item founded = tracker.findById(itemId);
@@ -78,7 +78,7 @@ public class StartUI {
         }
     }
 
-    private void cmdFindItemByName() {
+    public void cmdFindItemByName() {
         System.out.println("=== Поиск заявки по имени ====");
         String itemName = input.askStr("Введите имя заявки : ");
         Item[] items = tracker.findByName(itemName);
