@@ -2,9 +2,20 @@ package ru.job4j.tracker.actions;
 
 import ru.job4j.tracker.Input;
 import ru.job4j.tracker.Item;
+import ru.job4j.tracker.Output;
 import ru.job4j.tracker.Tracker;
 
 public class FindItemByIdAction implements UserAction {
+
+    private Input input;
+    private Output output;
+    private Tracker tracker;
+
+    public FindItemByIdAction(Input aInput, Output aOutput, Tracker aTracker) {
+        input = aInput;
+        output = aOutput;
+        tracker = aTracker;
+    }
 
     @Override
     public String getName() {
@@ -12,14 +23,14 @@ public class FindItemByIdAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
-        System.out.println("=== Поиск заявки по номеру (id) ====");
+    public boolean execute() {
+        output.println("=== Поиск заявки по номеру (id) ====");
         int itemId = input.askInt("Введите номер заявки : ");
         Item founded = tracker.findById(itemId);
         if (founded != null) {
-            System.out.println(founded);
+            output.println(founded);
         } else {
-            System.out.println("Заявка №" + itemId + " не найдена.");
+            output.println("Заявка №" + itemId + " не найдена.");
         }
         return false;
     }

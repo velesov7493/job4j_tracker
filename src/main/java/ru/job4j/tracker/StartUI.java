@@ -7,39 +7,56 @@ public class StartUI {
     private static StartUI instance;
 
     private Input input;
+    private Output output;
     private Tracker tracker;
     private UserAction[] actions;
 
     public StartUI(Input aInput, Tracker aTracker, UserAction[] aActions) {
         input = aInput;
+        output = new ConsoleOutput();
         tracker = aTracker;
         actions = aActions != null ? aActions : new UserAction[] {
-            new AddItemAction(),
-            new ShowAllItemsAction(),
-            new ReplaceItemAction(),
-            new DeleteItemAction(),
-            new FindItemByIdAction(),
-            new FindItemsByNameAction(),
+            new AddItemAction(input, output, tracker),
+            new ShowAllItemsAction(output, tracker),
+            new ReplaceItemAction(input, output, tracker),
+            new DeleteItemAction(input, output, tracker),
+            new FindItemByIdAction(input, output, tracker),
+            new FindItemsByNameAction(input, output, tracker),
             new ExitAction()
         };
     }
 
+    public StartUI(Input aInput, Output aOutput, Tracker aTracker, UserAction[] aActions) {
+        input = aInput;
+        output = aOutput;
+        tracker = aTracker;
+        actions = aActions != null ? aActions : new UserAction[] {
+                new AddItemAction(input, output, tracker),
+                new ShowAllItemsAction(output, tracker),
+                new ReplaceItemAction(input, output, tracker),
+                new DeleteItemAction(input, output, tracker),
+                new FindItemByIdAction(input, output, tracker),
+                new FindItemsByNameAction(input, output, tracker),
+                new ExitAction()
+        };
+    }
+
     private void cmdShowMenu() {
-        System.out.println("Меню:");
+        output.println("Меню:");
         for (int i = 0; i < actions.length; i++) {
-            System.out.println((i + 1) + ". " + actions[i].getName());
+            output.println((i + 1) + ". " + actions[i].getName());
         }
     }
 
     private boolean processCommand(int cmd) {
         boolean exit = false;
         if (cmd >= 1 && cmd <= actions.length) {
-            exit = actions[cmd - 1].execute(input, tracker);
+            exit = actions[cmd - 1].execute();
         } else {
-            System.out.println("Невыполнимая команда");
+            output.println("Невыполнимая команда");
         }
         if (exit) {
-            System.out.println("Выключаюсь...");
+            output.println("Выключаюсь...");
         }
         return exit;
     }

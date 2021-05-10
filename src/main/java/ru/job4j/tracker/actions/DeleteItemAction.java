@@ -1,9 +1,20 @@
 package ru.job4j.tracker.actions;
 
 import ru.job4j.tracker.Input;
+import ru.job4j.tracker.Output;
 import ru.job4j.tracker.Tracker;
 
 public class DeleteItemAction implements UserAction {
+
+    private Input input;
+    private Output output;
+    private Tracker tracker;
+
+    public DeleteItemAction(Input aInput, Output aOutput, Tracker aTracker) {
+        input = aInput;
+        output = aOutput;
+        tracker = aTracker;
+    }
 
     @Override
     public String getName() {
@@ -11,13 +22,13 @@ public class DeleteItemAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
-        System.out.println("=== Удаление заявки ====");
+    public boolean execute() {
+        output.println("=== Удаление заявки ====");
         int itemId = input.askInt("Введите номер заявки : ");
         if (tracker.delete(itemId)) {
-            System.out.println("Заявка успешно удалена.");
+            output.println("Заявка успешно удалена.");
         } else {
-            System.out.println("Заявка №" + itemId + " не найдена.");
+            output.println("Заявка №" + itemId + " не найдена.");
         }
         return false;
     }
