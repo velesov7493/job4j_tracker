@@ -2,7 +2,6 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 import ru.job4j.tracker.actions.*;
-
 import static org.junit.Assert.*;
 
 public class StartUITest {
@@ -122,9 +121,16 @@ public class StartUITest {
         };
         StartUI ui = new StartUI(in, output, tracker, actions);
         ui.execute();
-        String expected = item1.toString() + System.lineSeparator() + item2.toString();
+        String expected =
+                "Меню:" + System.lineSeparator()
+                + "1. Показать все заявки" + System.lineSeparator()
+                + "2. Выход" + System.lineSeparator()
+                + "=== Все заявки ====" + System.lineSeparator()
+                + item1 + System.lineSeparator()
+                + item2 + System.lineSeparator()
+                + "Выключаюсь..." + System.lineSeparator();
         String out = output.toString();
-        assertTrue(out.contains(expected));
+        assertEquals(expected, out);
     }
 
     @Test
@@ -142,8 +148,15 @@ public class StartUITest {
         };
         StartUI ui = new StartUI(in, output, tracker, actions);
         ui.execute();
+        String expected =
+                "Меню:" + System.lineSeparator()
+                + "1. Найти заявки по имени" + System.lineSeparator()
+                + "2. Выход" + System.lineSeparator()
+                + "=== Поиск заявки по имени ====" + System.lineSeparator()
+                + item1 + System.lineSeparator()
+                + "Выключаюсь..." + System.lineSeparator();
         String out = output.toString();
-        assertTrue(out.contains(item1.toString()));
+        assertEquals(expected, out);
     }
 
     @Test
@@ -161,7 +174,14 @@ public class StartUITest {
         };
         StartUI ui = new StartUI(in, output, tracker, actions);
         ui.execute();
+        String expected =
+                "Меню:" + System.lineSeparator()
+                + "1. Найти заявку по ID" + System.lineSeparator()
+                + "2. Выход" + System.lineSeparator()
+                + "=== Поиск заявки по номеру (id) ====" + System.lineSeparator()
+                + item2 + System.lineSeparator()
+                + "Выключаюсь..." + System.lineSeparator();
         String out = output.toString();
-        assertTrue(out.contains(item2.toString()));
+        assertEquals(expected, out);
     }
 }
