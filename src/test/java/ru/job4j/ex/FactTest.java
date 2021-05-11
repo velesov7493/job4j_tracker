@@ -11,4 +11,11 @@ public class FactTest {
         Fact.calc(-33);
     }
 
+    @Test
+    public void when4Then24() {
+        int expected = 24;
+        int result = Fact.calc(4);
+        assertEquals(expected, result);
+    }
+
 }
