@@ -10,14 +10,8 @@ public class Fact {
                 result *= index;
             }
         } else if (n < 0) {
-            throw new IllegalArgumentException(
-                    "Факториал отрицательных чисел (" + n + ") не существует!"
-            );
+            throw new IllegalArgumentException("N должно быть неотрицательным!");
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        int f = calc(-11);
     }
 }
