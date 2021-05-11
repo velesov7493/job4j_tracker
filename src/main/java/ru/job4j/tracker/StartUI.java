@@ -53,7 +53,7 @@ public class StartUI {
         if (cmd >= 1 && cmd <= actions.length) {
             exit = actions[cmd - 1].execute();
         } else {
-            output.println("Невыполнимая команда");
+            output.println("Невыполнимая команда. Допустимый диапазон: 1.." + actions.length);
         }
         if (exit) {
             output.println("Выключаюсь...");
@@ -72,7 +72,7 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-        instance = new StartUI(new ConsoleInput(), new Tracker(), null);
+        instance = new StartUI(new ValidateInput(), new Tracker(), null);
         instance.execute();
     }
 }
