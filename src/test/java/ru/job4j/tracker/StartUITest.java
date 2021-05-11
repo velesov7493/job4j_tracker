@@ -184,4 +184,26 @@ public class StartUITest {
         String out = output.toString();
         assertEquals(expected, out);
     }
+
+    @Test
+    public void whenInvalidExit() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] {"0", "1"}
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = new UserAction[]{
+                new ExitAction()
+        };
+        StartUI ui = new StartUI(in, out, tracker, actions);
+        ui.execute();
+        String ln = System.lineSeparator();
+        String expected =
+                "Меню:" + ln
+                + "1. Выход" + ln
+                + "Невыполнимая команда. Допустимый диапазон: 1..1" + ln
+                + "Выключаюсь..." + ln;
+        String output = out.toString();
+        assertEquals(expected, output);
+    }
 }
