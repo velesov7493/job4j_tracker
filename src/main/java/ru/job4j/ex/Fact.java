@@ -6,8 +6,6 @@ public class Fact {
         int result = 1;
         if (n < 0) {
             throw new IllegalArgumentException("N должно быть неотрицательным!");
-        } else if (n == 0) {
-            return 0;
         }
         for (int index = 1; index <= n; index++) {
             result *= index;

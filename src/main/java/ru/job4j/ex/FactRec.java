@@ -7,8 +7,7 @@ public class FactRec {
             throw new IllegalArgumentException("N должно быть неотрицательным!");
         }
         return switch (n) {
-            case 0 -> 0;
-            case 1 -> 1;
+            case 0, 1 -> 1;
             default -> calc(n - 1) * n;
         };
     }
