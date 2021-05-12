@@ -72,7 +72,10 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-        instance = new StartUI(new ValidateInput(), new Tracker(), null);
+        instance = new StartUI(
+                new ValidateInput(new ConsoleInput(), new ConsoleOutput()),
+                new Tracker(), null
+        );
         instance.execute();
     }
 }
