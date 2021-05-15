@@ -4,6 +4,8 @@ import ru.job4j.tracker.Item;
 import ru.job4j.tracker.Output;
 import ru.job4j.tracker.Tracker;
 
+import java.util.List;
+
 public class ShowAllItemsAction implements UserAction {
 
     private Output output;
@@ -22,8 +24,8 @@ public class ShowAllItemsAction implements UserAction {
     @Override
     public boolean execute() {
         output.println("=== Все заявки ====");
-        Item[] items = tracker.findAll();
-        if (items.length == 0) {
+        List<Item> items = tracker.findAll();
+        if (items.isEmpty()) {
             output.println("Еще нет ни одной заявки.");
             return false;
         }

@@ -2,6 +2,9 @@ package ru.job4j.tracker;
 
 import ru.job4j.tracker.actions.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StartUI {
 
     private static StartUI instance;
@@ -9,51 +12,61 @@ public class StartUI {
     private Input input;
     private Output output;
     private Tracker tracker;
-    private UserAction[] actions;
+    private List<UserAction> actions;
 
     public StartUI(Input aInput, Tracker aTracker, UserAction[] aActions) {
         input = aInput;
         output = new ConsoleOutput();
         tracker = aTracker;
-        actions = aActions != null ? aActions : new UserAction[] {
-            new AddItemAction(input, output, tracker),
-            new ShowAllItemsAction(output, tracker),
-            new ReplaceItemAction(input, output, tracker),
-            new DeleteItemAction(input, output, tracker),
-            new FindItemByIdAction(input, output, tracker),
-            new FindItemsByNameAction(input, output, tracker),
-            new ExitAction()
-        };
+        actions = new ArrayList<>();
+        if (aActions != null) {
+            for (UserAction element : aActions) {
+                actions.add(element);
+            }
+            return;
+        }
+        addDefaultActions();
     }
 
     public StartUI(Input aInput, Output aOutput, Tracker aTracker, UserAction[] aActions) {
         input = aInput;
         output = aOutput;
         tracker = aTracker;
-        actions = aActions != null ? aActions : new UserAction[] {
-                new AddItemAction(input, output, tracker),
-                new ShowAllItemsAction(output, tracker),
-                new ReplaceItemAction(input, output, tracker),
-                new DeleteItemAction(input, output, tracker),
-                new FindItemByIdAction(input, output, tracker),
-                new FindItemsByNameAction(input, output, tracker),
-                new ExitAction()
-        };
+        actions = new ArrayList<>();
+        if (aActions != null) {
+            for (UserAction element : aActions) {
+                actions.add(element);
+            }
+            return;
+        }
+        addDefaultActions();
+    }
+
+    private void addDefaultActions() {
+        actions.add(new AddItemAction(input, output, tracker));
+        actions.add(new ShowAllItemsAction(output, tracker));
+        actions.add(new ReplaceItemAction(input, output, tracker));
+        actions.add(new DeleteItemAction(input, output, tracker));
+        actions.add(new FindItemByIdAction(input, output, tracker));
+        actions.add(new FindItemsByNameAction(input, output, tracker));
+        actions.add(new ExitAction());
     }
 
     private void cmdShowMenu() {
         output.println("Меню:");
-        for (int i = 0; i < actions.length; i++) {
-            output.println((i + 1) + ". " + actions[i].getName());
+        int i = 1;
+        for (UserAction entry : actions) {
+            output.println(i + ". " + entry.getName());
+            i++;
         }
     }
 
     private boolean processCommand(int cmd) {
         boolean exit = false;
-        if (cmd >= 1 && cmd <= actions.length) {
-            exit = actions[cmd - 1].execute();
+        if (cmd >= 1 && cmd <= actions.size()) {
+            exit = actions.get(cmd - 1).execute();
         } else {
-            output.println("Невыполнимая команда. Допустимый диапазон: 1.." + actions.length);
+            output.println("Невыполнимая команда. Допустимый диапазон: 1.." + actions.size());
         }
         if (exit) {
             output.println("Выключаюсь...");

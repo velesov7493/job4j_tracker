@@ -2,6 +2,9 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 import ru.job4j.tracker.actions.*;
+
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class StartUITest {
@@ -14,7 +17,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         UserAction addItem = new AddItemAction(input, output, tracker);
         addItem.execute();
-        Item created = tracker.findAll()[0];
+        Item created = tracker.findAll().get(0);
         String expected = "Fix PC";
         assertEquals(expected, created.getName());
     }
@@ -66,8 +69,8 @@ public class StartUITest {
         };
         StartUI ui = new StartUI(in, output, tracker, actions);
         ui.execute();
-        Item[] found = tracker.findAll();
-        assertEquals(found[0].getName(), "Item name");
+        List<Item> found = tracker.findAll();
+        assertEquals(found.get(0).getName(), "Item name");
     }
 
     @Test
