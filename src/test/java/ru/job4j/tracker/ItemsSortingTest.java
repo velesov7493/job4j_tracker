@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 public class ItemsSortingTest {
@@ -25,14 +26,7 @@ public class ItemsSortingTest {
                 new Item(3, "Тест")
         );
         Collections.sort(items, new SortByNameAsc());
-        boolean result = true;
-        for (int i = 0; i < items.size(); i++) {
-            if (!items.get(i).equals(expected.get(i))) {
-                result = false;
-                break;
-            }
-        }
-        assertTrue(result);
+        assertThat(items, is(expected));
     }
 
     @Test
@@ -48,13 +42,6 @@ public class ItemsSortingTest {
                 new Item(2, "Аудит")
         );
         Collections.sort(items, new SortByNameDesc());
-        boolean result = true;
-        for (int i = 0; i < items.size(); i++) {
-            if (!items.get(i).equals(expected.get(i))) {
-                result = false;
-                break;
-            }
-        }
-        assertTrue(result);
+        assertThat(items, is(expected));
     }
 }
