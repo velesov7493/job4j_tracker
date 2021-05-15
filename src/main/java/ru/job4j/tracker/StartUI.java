@@ -14,31 +14,27 @@ public class StartUI {
     private Tracker tracker;
     private List<UserAction> actions;
 
-    public StartUI(Input aInput, Tracker aTracker, UserAction[] aActions) {
+    public StartUI(Input aInput, Tracker aTracker, List<UserAction> aActions) {
         input = aInput;
         output = new ConsoleOutput();
         tracker = aTracker;
-        actions = new ArrayList<>();
         if (aActions != null) {
-            for (UserAction element : aActions) {
-                actions.add(element);
-            }
+            actions = new ArrayList<>(aActions);
             return;
         }
+        actions = new ArrayList<>();
         addDefaultActions();
     }
 
-    public StartUI(Input aInput, Output aOutput, Tracker aTracker, UserAction[] aActions) {
+    public StartUI(Input aInput, Output aOutput, Tracker aTracker, List<UserAction> aActions) {
         input = aInput;
         output = aOutput;
         tracker = aTracker;
-        actions = new ArrayList<>();
         if (aActions != null) {
-            for (UserAction element : aActions) {
-                actions.add(element);
-            }
+            actions = new ArrayList<>(aActions);
             return;
         }
+        actions = new ArrayList<>();
         addDefaultActions();
     }
 

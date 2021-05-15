@@ -7,7 +7,6 @@ public class Tracker {
 
     private final List<Item> items;
     private int ids = 1;
-    private int size = 0;
 
     public Tracker() {
         items = new ArrayList<>();
@@ -32,7 +31,7 @@ public class Tracker {
     }
 
     public List<Item> findAll() {
-        return items;
+        return new ArrayList<>(items);
     }
 
     public List<Item> findByName(String key) {
