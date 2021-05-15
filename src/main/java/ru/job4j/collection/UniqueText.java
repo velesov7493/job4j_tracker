@@ -13,7 +13,10 @@ public class UniqueText {
             check.add(word);
         }
         for (String word : text) {
-            result &= check.contains(word);
+            if (!check.contains(word)) {
+                result = false;
+                break;
+            }
         }
         return result;
     }
