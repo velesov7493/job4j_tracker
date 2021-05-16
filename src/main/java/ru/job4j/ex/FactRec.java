@@ -6,10 +6,10 @@ public class FactRec {
         if (n < 0) {
             throw new IllegalArgumentException("N должно быть неотрицательным!");
         }
-        return switch (n) {
-            case 0, 1 -> 1;
-            default -> calc(n - 1) * n;
-        };
+        if (n < 2) {
+            return 1;
+        }
+        return calc(n - 1) * n;
     }
 
     public static void main(String[] args) {
