@@ -6,8 +6,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 public class UserTest {
@@ -23,12 +22,30 @@ public class UserTest {
     }
 
     @Test
-    public void whenComparePertVSIvan() {
+    public void whenComparePetrVSIvan() {
         int rsl = new User("Petr", 32)
                 .compareTo(
                         new User("Ivan", 31)
                 );
         assertThat(rsl, greaterThan(0));
+    }
+
+    @Test
+    public void whenCompareIvan33VSIvan32() {
+        int rsl = new User("Ivan", 33)
+                .compareTo(
+                        new User("Ivan", 32)
+                );
+        assertThat(rsl, greaterThan(0));
+    }
+
+    @Test
+    public void whenCompareIvan32VSIvan35() {
+        int rsl = new User("Ivan", 32)
+                .compareTo(
+                        new User("Ivan", 35)
+                );
+        assertThat(rsl, lessThan(0));
     }
 
 }
