@@ -2,9 +2,21 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Этот класс - модель данных аккаунта
+ * (расчетного счета) в банке
+ */
+
 public class Account {
 
+    /**
+     * Номер счета
+     */
     private String requisite;
+
+    /**
+     * Баланс счета
+     */
     private double balance;
 
     public Account(String requisite, double balance) {
