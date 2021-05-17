@@ -11,25 +11,10 @@ public class Article {
      * @param text разбиваемый текст
      * @return слова
      */
-
     private static String[] textWords(String text) {
-        String cleanMsg = "";
         String msg = text.toLowerCase();
-        char[] excessiveChars = {'.', ',', '!', '?', ':', ';', '-', '(', ')'};
-        for (int i = 0; i < msg.length(); i++) {
-            char check = msg.charAt(i);
-            boolean skip = false;
-            for (char excessive : excessiveChars) {
-                if (check == excessive) {
-                    skip = true;
-                    break;
-                }
-            }
-            if (!skip) {
-                cleanMsg += check;
-            }
-        }
-        return cleanMsg.split(" ");
+        msg = msg.replaceAll("\\p{P}", "");
+        return msg.split(" ");
     }
 
     public static boolean generateBy(String origin, String line) {
