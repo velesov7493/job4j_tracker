@@ -9,10 +9,10 @@ public class DepartmentsDescComp implements Comparator<String> {
         String[] chunks1 = left.split("/", 2);
         String[] chunks2 = right.split("/", 2);
         int result = chunks2[0].compareTo(chunks1[0]);
-        if (result != 0 || chunks1.length == 1 || chunks2.length == 1) {
+        if (result != 0) {
             return result;
         }
-        result = chunks1[1].compareTo(chunks2[1]);
+        result = left.compareTo(right);
         return result;
     }
 }
