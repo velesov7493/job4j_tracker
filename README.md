@@ -21,4 +21,5 @@
 + Коллекции Set, HashSet
 + Map, HashMap, LinkedHashMap
 + Сортировка
-+ Инструменты: Travis CI, Codecov.
++ Инструменты: Travis CI, Codecov
++ Лямбда-выражения
