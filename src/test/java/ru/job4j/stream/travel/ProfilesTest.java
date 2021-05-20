@@ -13,16 +13,37 @@ public class ProfilesTest {
     @Test
     public void whenCollect() {
         List<Address> expected = Arrays.asList(
-                new Address("Шуя", "Ленина", 77, 9),
                 new Address("Иваново", "Лежневская", 101, 40),
                 new Address("Иваново", "10 августа", 10, 4),
-                new Address("Кинешма", "Юрьевецкая", 105, 0)
+                new Address("Кинешма", "Юрьевецкая", 105, 0),
+                new Address("Шуя", "Ленина", 77, 9)
         );
         List<Profile> profiles = Arrays.asList(
                 new Profile(expected.get(0)),
                 new Profile(expected.get(1)),
                 new Profile(expected.get(2)),
                 new Profile(expected.get(3))
+        );
+        Profiles p = new Profiles();
+        List<Address> result = p.collect(profiles);
+        assertThat(result, is(expected));
+    }
+
+    @Test
+    public void whenCollectDistinctOrderByCity() {
+        List<Address> expected = Arrays.asList(
+                new Address("Иваново", "Лежневская", 101, 40),
+                new Address("Иваново", "10 августа", 10, 4),
+                new Address("Кинешма", "Юрьевецкая", 105, 0),
+                new Address("Шуя", "Ленина", 77, 9)
+        );
+        List<Profile> profiles = Arrays.asList(
+                new Profile(new Address("Шуя", "Ленина", 77, 9)),
+                new Profile(new Address("Шуя", "Ленина", 77, 9)),
+                new Profile(new Address("Иваново", "Лежневская", 101, 40)),
+                new Profile(new Address("Иваново", "Лежневская", 101, 40)),
+                new Profile(new Address("Иваново", "10 августа", 10, 4)),
+                new Profile(new Address("Кинешма", "Юрьевецкая", 105, 0))
         );
         Profiles p = new Profiles();
         List<Address> result = p.collect(profiles);
