@@ -79,7 +79,7 @@ public class SchoolTest {
         );
         School sc = new School();
         Map<String, Student> expected = new HashMap<>();
-        expected.put("Surname1", students.get(1));
+        expected.put("Surname1", students.get(0));
         expected.put("Surname4", students.get(2));
         expected.put("Surname6", students.get(3));
         expected.put("Surname9", students.get(4));

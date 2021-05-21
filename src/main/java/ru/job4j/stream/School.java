@@ -19,7 +19,7 @@ public class School {
                        Collectors.toMap(
                                e -> e.getSurname(),
                                e -> e,
-                               (s, a) -> s.getScore() >= a.getScore() ? s : a
+                               (s, a) -> s
                        )
                );
     }
