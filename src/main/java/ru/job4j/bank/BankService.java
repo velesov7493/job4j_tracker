@@ -45,14 +45,11 @@ public class BankService {
      * @return объект клиента
      */
     public User findByPassport(String passport) {
-        User result = null;
-        for (User key : users.keySet()) {
-            if (passport.equals(key.getPassport())) {
-                result = key;
-                break;
-            }
-        }
-        return result;
+        return
+                users.keySet().stream()
+                .filter(u -> passport.equals(u.getPassport()))
+                .findFirst()
+                .orElse(null);
     }
 
     /**
@@ -67,14 +64,11 @@ public class BankService {
         if (user == null) {
             return result;
         }
-        List<Account> accounts = users.get(user);
-        for (Account entry : accounts) {
-            if (requisite.equals(entry.getRequisite())) {
-                result = entry;
-                break;
-            }
-        }
-        return result;
+        return
+                users.get(user).stream()
+                .filter(a -> requisite.equals(a.getRequisite()))
+                .findFirst()
+                .orElse(null);
     }
 
     /**
