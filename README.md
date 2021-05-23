@@ -24,3 +24,4 @@
 + Инструменты: Travis CI, Codecov
 + Лямбда-выражения
 + Stream API
++ Улучшенное Java API в новых JDK
