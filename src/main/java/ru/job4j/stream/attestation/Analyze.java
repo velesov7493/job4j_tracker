@@ -53,6 +53,7 @@ public class Analyze {
                 ))
                 .entrySet().stream()
                 .map(e -> new Tuple(e.getKey(), e.getValue()))
+                .sorted((left, right) -> right.getName().compareTo(left.getName()))
                 .collect(Collectors.toList());
     }
 
