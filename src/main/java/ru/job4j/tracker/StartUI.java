@@ -12,13 +12,13 @@ public class StartUI {
 
     private Input input;
     private Output output;
-    private Tracker tracker;
+    private Store itemsStore;
     private List<UserAction> actions;
 
-    public StartUI(Input aInput, Tracker aTracker, List<UserAction> aActions) {
+    public StartUI(Input aInput, Store aStore, List<UserAction> aActions) {
         input = aInput;
         output = new ConsoleOutput();
-        tracker = aTracker;
+        itemsStore = aStore;
         if (aActions != null) {
             actions = new ArrayList<>(aActions);
             return;
@@ -27,10 +27,10 @@ public class StartUI {
         addDefaultActions();
     }
 
-    public StartUI(Input aInput, Output aOutput, Tracker aTracker, List<UserAction> aActions) {
+    public StartUI(Input aInput, Output aOutput, Store aStore, List<UserAction> aActions) {
         input = aInput;
         output = aOutput;
-        tracker = aTracker;
+        itemsStore = aStore;
         if (aActions != null) {
             actions = new ArrayList<>(aActions);
             return;
@@ -40,12 +40,12 @@ public class StartUI {
     }
 
     private void addDefaultActions() {
-        actions.add(new AddItemAction(input, output, tracker));
-        actions.add(new ShowAllItemsAction(output, tracker));
-        actions.add(new ReplaceItemAction(input, output, tracker));
-        actions.add(new DeleteItemAction(input, output, tracker));
-        actions.add(new FindItemByIdAction(input, output, tracker));
-        actions.add(new FindItemsByNameAction(input, output, tracker));
+        actions.add(new AddItemAction(input, output, itemsStore));
+        actions.add(new ShowAllItemsAction(output, itemsStore));
+        actions.add(new ReplaceItemAction(input, output, itemsStore));
+        actions.add(new DeleteItemAction(input, output, itemsStore));
+        actions.add(new FindItemByIdAction(input, output, itemsStore));
+        actions.add(new FindItemsByNameAction(input, output, itemsStore));
         actions.add(new ExitAction());
     }
 
@@ -85,7 +85,7 @@ public class StartUI {
         Output out = new ConsoleOutput();
         instance = new StartUI(
                 new ValidateInput(new ConsoleInput(), out),
-                out, new Tracker(), null
+                out, new SqlTracker(), null
         );
         instance.execute();
     }

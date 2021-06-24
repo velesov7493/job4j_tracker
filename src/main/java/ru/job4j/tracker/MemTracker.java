@@ -3,13 +3,14 @@ package ru.job4j.tracker;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tracker {
+public class MemTracker implements Store {
 
     private final List<Item> items;
-    private int ids = 1;
+    private int ids;
 
-    public Tracker() {
+    public MemTracker() {
         items = new ArrayList<>();
+        ids = 1;
     }
 
     private int indexOf(int id) {
@@ -22,6 +23,11 @@ public class Tracker {
             }
         }
         return result;
+    }
+
+    @Override
+    public void close() {
+        items.clear();
     }
 
     public Item add(Item item) {

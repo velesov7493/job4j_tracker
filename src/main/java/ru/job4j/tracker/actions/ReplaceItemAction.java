@@ -3,15 +3,15 @@ package ru.job4j.tracker.actions;
 import ru.job4j.tracker.io.Input;
 import ru.job4j.tracker.Item;
 import ru.job4j.tracker.io.Output;
-import ru.job4j.tracker.Tracker;
+import ru.job4j.tracker.Store;
 
 public class ReplaceItemAction implements UserAction {
 
     private Input input;
     private Output output;
-    private Tracker tracker;
+    private Store tracker;
 
-    public ReplaceItemAction(Input aInput, Output aOutput, Tracker aTracker) {
+    public ReplaceItemAction(Input aInput, Output aOutput, Store aTracker) {
         input = aInput;
         output = aOutput;
         tracker = aTracker;

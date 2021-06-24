@@ -6,10 +6,10 @@ public class SingleTracker {
 
     private static SingleTracker instance = null;
 
-    private Tracker tracker;
+    private MemTracker tracker;
 
     private SingleTracker() {
-        tracker = new Tracker();
+        tracker = new MemTracker();
     }
 
     public static SingleTracker getInstance() {
