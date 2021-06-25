@@ -13,8 +13,8 @@ public class SqlTracker implements Store {
     public SqlTracker() {
         try (InputStream in =
                      SqlTracker.class
-                             .getClassLoader()
-                             .getResourceAsStream("app.properties")
+                     .getClassLoader()
+                     .getResourceAsStream("app.properties")
         ) {
             Properties config = new Properties();
             config.load(in);
@@ -27,6 +27,10 @@ public class SqlTracker implements Store {
         } catch (Exception e) {
             throw new IllegalStateException(e);
         }
+    }
+
+    public SqlTracker(Connection aConnection) {
+        cn = aConnection;
     }
 
     @Override
