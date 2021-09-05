@@ -7,14 +7,16 @@ language: java
 jdk:
   - openjdk16
 
-# используем режим суперпользователя для сборки проекта.
-sudo: enabled
+# используем режим обычного пользователя для сборки проекта.
+sudo: false
 
 services:
   - postgresql
 
 before_install:
-  - psql -c 'create database tracker_db;' -U postgres
+  - sudo -i -u postgres
+  - psql -c 'CREATE DATABASE tracker_db;'
+  - exit
 
 # после выполнения сборки запустить скрипт, который будет собирать статистику по JaCoCo
 # Здесь используется сторонний сервис https://codecov.io/
