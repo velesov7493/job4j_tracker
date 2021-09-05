@@ -21,7 +21,7 @@
             <id>test</id>
             <properties>
                 <db.driver>org.h2.Driver</db.driver>
-                <db.url>jdbc:h2:~/testdb;MODE=PostgreSQL;CASE_INSENSITIVE_IDENTIFIERS=TRUE;</db.url>
+                <db.url>jdbc:h2:~/test;MODE=PostgreSQL;CASE_INSENSITIVE_IDENTIFIERS=TRUE;</db.url>
                 <db.username></db.username>
                 <db.password></db.password>
             </properties>
@@ -38,6 +38,7 @@
                 <db.password>qx8eec</db.password>
             </properties>
         </profile>
+
         <profile>
             <id>travis</id>
             <activation>
@@ -50,6 +51,7 @@
                 <db.password></db.password>
             </properties>
         </profile>
+
     </profiles>
 
     <dependencies>
