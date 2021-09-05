@@ -10,10 +10,10 @@ public class StartUI {
 
     private static StartUI instance;
 
-    private Input input;
-    private Output output;
-    private Store itemsStore;
-    private List<UserAction> actions;
+    private final Input input;
+    private final Output output;
+    private final Store itemsStore;
+    private final List<UserAction> actions;
 
     public StartUI(Input aInput, Store aStore, List<UserAction> aActions) {
         input = aInput;
@@ -85,7 +85,7 @@ public class StartUI {
         Output out = new ConsoleOutput();
         instance = new StartUI(
                 new ValidateInput(new ConsoleInput(), out),
-                out, new SqlTracker(), null
+                out, new MemTracker(), null
         );
         instance.execute();
     }
