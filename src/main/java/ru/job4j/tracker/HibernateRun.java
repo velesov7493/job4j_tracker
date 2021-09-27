@@ -10,31 +10,7 @@ import java.util.List;
 
 public class HibernateRun {
 
-    public static void main(String[] args) {
-        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-                .configure().build();
-        try {
-            SessionFactory sf = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-            Item item = create(new Item("Learn Hibernate"), sf);
-            System.out.println(item);
-            item.setName("Learn Hibernate 5.");
-            update(item, sf);
-            System.out.println(item);
-            Item rsl = findById(item.getId(), sf);
-            System.out.println(rsl);
-            delete(rsl.getId(), sf);
-            List<Item> list = findAll(sf);
-            for (Item it : list) {
-                System.out.println(it);
-            }
-        }  catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            StandardServiceRegistryBuilder.destroy(registry);
-        }
-    }
-
-    public static Item create(Item item, SessionFactory sf) {
+    private static Item create(Item item, SessionFactory sf) {
         Session session = sf.openSession();
         session.beginTransaction();
         session.save(item);
@@ -43,7 +19,7 @@ public class HibernateRun {
         return item;
     }
 
-    public static void update(Item item, SessionFactory sf) {
+    private static void update(Item item, SessionFactory sf) {
         Session session = sf.openSession();
         session.beginTransaction();
         session.update(item);
@@ -51,7 +27,7 @@ public class HibernateRun {
         session.close();
     }
 
-    public static void delete(Integer id, SessionFactory sf) {
+    private static void delete(Integer id, SessionFactory sf) {
         Session session = sf.openSession();
         session.beginTransaction();
         Item item = new Item(null);
@@ -61,21 +37,50 @@ public class HibernateRun {
         session.close();
     }
 
-    public static List<Item> findAll(SessionFactory sf) {
+    private static List<Item> findAll(SessionFactory sf) {
         Session session = sf.openSession();
         session.beginTransaction();
-        List result = session.createQuery("from ru.job4j.tracker.Item").list();
+        List<Item> result = session.createQuery("from ru.job4j.tracker.Item").list();
         session.getTransaction().commit();
         session.close();
         return result;
     }
 
-    public static Item findById(Integer id, SessionFactory sf) {
+    private static Item findById(Integer id, SessionFactory sf) {
         Session session = sf.openSession();
         session.beginTransaction();
         Item result = session.get(Item.class, id);
         session.getTransaction().commit();
         session.close();
         return result;
+    }
+
+    public static void main(String[] args) {
+        final StandardServiceRegistry registry =
+                new StandardServiceRegistryBuilder()
+                .configure().build();
+        try {
+            SessionFactory sf = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+            Item item = new Item("Изучение Hibernate 5");
+            item.setDescription("Hibernate - 21 задача");
+            create(item, sf);
+            System.out.println(item);
+            item = new Item("Изучение Spring");
+            item.setDescription("Spring - 42 задачи");
+            create(item, sf);
+            System.out.println(item);
+            item = new Item("Изучение Микросервисов");
+            item.setDescription("Микросервисы - 22 задачи");
+            create(item, sf);
+            System.out.println(item);
+            List<Item> list = findAll(sf);
+            for (Item it : list) {
+                System.out.println(it);
+            }
+        }  catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            StandardServiceRegistryBuilder.destroy(registry);
+        }
     }
 }

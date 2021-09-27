@@ -87,7 +87,7 @@ public class SqlTracker implements Store {
             ResultSet s = st.executeQuery();
             while (s.next()) {
                 Item entry = new Item(s.getInt("id"), s.getString("name"));
-                entry.setCreated(s.getTimestamp("created").toLocalDateTime());
+                entry.setCreated(s.getTimestamp("created"));
                 result.add(entry);
             }
             s.close();
@@ -106,7 +106,7 @@ public class SqlTracker implements Store {
             ResultSet s = st.executeQuery(query);
             while (s.next()) {
                 Item entry = new Item(s.getInt("id"), s.getString("name"));
-                entry.setCreated(s.getTimestamp("created").toLocalDateTime());
+                entry.setCreated(s.getTimestamp("created"));
                 result.add(entry);
             }
             s.close();
@@ -125,7 +125,7 @@ public class SqlTracker implements Store {
             ResultSet s = st.executeQuery();
             if (s.next()) {
                 result = new Item(s.getInt("id"), s.getString("name"));
-                result.setCreated(s.getTimestamp("created").toLocalDateTime());
+                result.setCreated(s.getTimestamp("created"));
             }
             s.close();
         } catch (SQLException ex) {
