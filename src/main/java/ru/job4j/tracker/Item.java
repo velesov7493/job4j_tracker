@@ -1,7 +1,6 @@
 package ru.job4j.tracker;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -15,11 +14,8 @@ public class Item {
     @SequenceGenerator(name = "itemsIdSeq", sequenceName = "tz_items_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "itemsIdSeq")
     private int id;
-    @Column(name = "name")
     private String name;
-    @Column(name = "created")
-    private Timestamp createdDateTime;
-    transient private LocalDateTime created;
+    private LocalDateTime created;
 
     public Item() {
         created = LocalDateTime.now();
@@ -58,14 +54,6 @@ public class Item {
 
     public void setCreated(LocalDateTime created) {
         this.created = created;
-    }
-
-    public Timestamp getCreatedDateTime() {
-        return createdDateTime;
-    }
-
-    public void setCreatedDateTime(Timestamp createdDateTime) {
-        this.createdDateTime = createdDateTime;
     }
 
     @Override
