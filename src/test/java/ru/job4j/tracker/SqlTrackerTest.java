@@ -6,6 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -20,12 +21,36 @@ public class SqlTrackerTest {
 
     private static Connection connection;
 
+    private static void initDatabase(Connection cn, String sqlResourceName) {
+        String sql = "";
+        try (InputStream inSQL =
+                     SqlTrackerTest.class
+                     .getClassLoader()
+                     .getResourceAsStream(sqlResourceName)
+        ) {
+            if (inSQL != null) {
+                sql = new String(inSQL.readAllBytes(), StandardCharsets.UTF_8);
+            }
+        } catch (Throwable ex) {
+            throw new IllegalStateException(
+                "Критическая ошибка - невозможно прочитать sql-скрипт инициализации!", ex
+            );
+        }
+        try (
+                PreparedStatement ps = cn.prepareStatement(sql)
+        ) {
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            throw new IllegalStateException("Ошибка при выполнении sql-скрипта инициализации!", ex);
+        }
+    }
+
     @BeforeClass
     public static void initConnection() {
         try (InputStream in =
                      SqlTrackerTest.class
                      .getClassLoader()
-                     .getResourceAsStream("test.properties")
+                     .getResourceAsStream("app.properties")
         ) {
             Properties config = new Properties();
             config.load(in);
@@ -36,6 +61,10 @@ public class SqlTrackerTest {
                     config.getProperty("password")
 
             );
+            String sqlInitResource = config.getProperty("initScript");
+            if (sqlInitResource != null) {
+                initDatabase(connection, sqlInitResource);
+            }
         } catch (Exception e) {
             throw new IllegalStateException(e);
         }
