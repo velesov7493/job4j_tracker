@@ -47,7 +47,7 @@
                 <db.url>jdbc:postgresql://localhost/tracker_db</db.url>
                 <db.driver>org.postgresql.Driver</db.driver>
                 <db.username>postgres</db.username>
-                <db.password></db.password>
+                <db.password>password</db.password>
             </properties>
         </profile>
     </profiles>
