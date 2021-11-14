@@ -21,12 +21,12 @@
             <id>test</id>
             <properties>
                 <db.driver>org.h2.Driver</db.driver>
-                <db.url>jdbc:h2:~/test;MODE=PostgreSQL;CASE_INSENSITIVE_IDENTIFIERS=TRUE;</db.url>
+                <db.url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;MODE=PostgreSQL;CASE_INSENSITIVE_IDENTIFIERS=TRUE;</db.url>
                 <db.username></db.username>
                 <db.password></db.password>
             </properties>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
         <profile>
@@ -36,18 +36,6 @@
                 <db.url>jdbc:postgresql://127.0.0.1:5432/tracker_db</db.url>
                 <db.username>job4j</db.username>
                 <db.password>qx8eec</db.password>
-            </properties>
-        </profile>
-        <profile>
-            <id>travis</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <db.url>jdbc:postgresql://localhost/tracker_db</db.url>
-                <db.driver>org.postgresql.Driver</db.driver>
-                <db.username>postgres</db.username>
-                <db.password>password</db.password>
             </properties>
         </profile>
     </profiles>
