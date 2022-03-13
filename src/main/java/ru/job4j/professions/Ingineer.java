@@ -13,9 +13,11 @@ public class Ingineer extends Profession {
         currentProject = aCurrentProject;
     }
 
-    public void work() { }
+    public void work() {
+    }
 
-    public void workOvertime(Project overtimeProject) { }
+    public void workOvertime(Project overtimeProject) {
+    }
 
     public Company getCompany() {
         return company;

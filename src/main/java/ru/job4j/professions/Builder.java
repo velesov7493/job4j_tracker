@@ -16,7 +16,8 @@ public class Builder extends Ingineer {
         workersCount = aWorkersCount;
     }
 
-    public void createDocumentation(Project buildingProject) { }
+    public void createDocumentation(Project buildingProject) {
+    }
 
     public boolean approveConstruction(Project buildingProject) {
         return true;

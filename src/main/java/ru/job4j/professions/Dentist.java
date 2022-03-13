@@ -11,9 +11,11 @@ public class Dentist extends Doctor {
         privatePractice = aPrivatePractice;
     }
 
-    public void pullOutTooth(Pacient pacient) { }
+    public void pullOutTooth(Pacient pacient) {
+    }
 
-    public void insertTooth(Pacient pacient, ToothType toothType) { }
+    public void insertTooth(Pacient pacient, ToothType toothType) {
+    }
 
     public boolean isPrivatePractice() {
         return privatePractice;

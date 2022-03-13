@@ -9,7 +9,8 @@ public class Profession {
     private String education;
     private Date birthday;
 
-    public Profession() { }
+    public Profession() {
+    }
 
     public String getName() {
         return name;

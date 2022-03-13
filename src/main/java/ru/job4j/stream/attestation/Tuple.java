@@ -31,7 +31,7 @@ public class Tuple {
         Tuple tuple = (Tuple) o;
         return
                 Double.compare(tuple.score, score) == 0
-                && Objects.equals(name, tuple.name);
+                        && Objects.equals(name, tuple.name);
     }
 
     @Override

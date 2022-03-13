@@ -32,7 +32,7 @@ public class ActionsTest {
         String ln = System.lineSeparator();
         String expected =
                 "=== Редактирование заявки ===="
-                + ln + "Заявка успешно отредактирована." + ln;
+                        + ln + "Заявка успешно отредактирована." + ln;
 
         assertThat(out.toString(), is(expected));
         assertThat(tracker.findAll().get(0).getName(), is(replacedName));
@@ -51,7 +51,7 @@ public class ActionsTest {
         String ln = System.lineSeparator();
         String expected =
                 "=== Удаление заявки ===="
-                + ln + "Заявка успешно удалена." + ln;
+                        + ln + "Заявка успешно удалена." + ln;
 
         assertThat(out.toString(), is(expected));
         assertThat(tracker.findAll().isEmpty(), is(true));
@@ -71,7 +71,7 @@ public class ActionsTest {
         String ln = System.lineSeparator();
         String expected =
                 "=== Поиск заявки по номеру (id) ===="
-                + ln + item.toString() + ln;
+                        + ln + item.toString() + ln;
 
         assertThat(out.toString(), is(expected));
         assertThat(item.getId(), is(1));
@@ -91,7 +91,7 @@ public class ActionsTest {
         String ln = System.lineSeparator();
         String expected =
                 "=== Поиск заявки по имени ===="
-                + ln + item.toString() + ln;
+                        + ln + item.toString() + ln;
 
         assertThat(out.toString(), is(expected));
     }

@@ -59,7 +59,7 @@ public class Person {
         Person person = (Person) o;
         return
                 name.equals(person.name) && surname.equals(person.surname)
-                && phone.equals(person.phone) && address.equals(person.address);
+                        && phone.equals(person.phone) && address.equals(person.address);
     }
 
     @Override

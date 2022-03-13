@@ -17,6 +17,7 @@ public class BankService {
 
     /**
      * Добавить клиента в сервис
+     *
      * @param user клиент, добавляемый в сервис
      */
     public void addUser(User user) {
@@ -25,8 +26,9 @@ public class BankService {
 
     /**
      * Добавить личный счет клиенту
+     *
      * @param passport серия и номер паспорта клиента, которому добавляется счет
-     * @param account Новый счет
+     * @param account  Новый счет
      */
     public void addAccount(String passport, Account account) {
         Optional<User> user = findByPassport(passport);
@@ -41,19 +43,21 @@ public class BankService {
 
     /**
      * Найти клиента по его паспортным данным
+     *
      * @param passport серия и номер паспорта
      * @return объект клиента
      */
     public Optional<User> findByPassport(String passport) {
         return
                 users.keySet().stream()
-                .filter(u -> passport.equals(u.getPassport()))
-                .findFirst();
+                        .filter(u -> passport.equals(u.getPassport()))
+                        .findFirst();
     }
 
     /**
      * Найти счет по его реквизитам
-     * @param passport серия и номер паспорта держателя счета
+     *
+     * @param passport  серия и номер паспорта держателя счета
      * @param requisite номер счета
      * @return объект счета
      */
@@ -62,18 +66,19 @@ public class BankService {
         return
                 user.flatMap(
                         value -> users.get(value).stream()
-                        .filter(a -> requisite.equals(a.getRequisite()))
-                        .findFirst()
+                                .filter(a -> requisite.equals(a.getRequisite()))
+                                .findFirst()
                 );
     }
 
     /**
      * Выполнить перевод средств
-     * @param srcPassport серия/номер паспорта плательщика
-     * @param srcRequisite номер счета плательщика
-     * @param destPassport серия/номер паспорта получателя
+     *
+     * @param srcPassport   серия/номер паспорта плательщика
+     * @param srcRequisite  номер счета плательщика
+     * @param destPassport  серия/номер паспорта получателя
      * @param destRequisite номер счета получателя
-     * @param amount сумма перевода
+     * @param amount        сумма перевода
      * @return {@code} true в случае успеха
      */
     public boolean transferMoney(
@@ -82,7 +87,7 @@ public class BankService {
     ) {
         boolean result = false;
         Optional<Account> srcAcc = findByRequisite(srcPassport, srcRequisite);
-        Optional<Account>  destAcc = findByRequisite(destPassport, destRequisite);
+        Optional<Account> destAcc = findByRequisite(destPassport, destRequisite);
         if (srcAcc.isPresent() && destAcc.isPresent() && srcAcc.get().getBalance() >= amount) {
             srcAcc.get().setBalance(srcAcc.get().getBalance() - amount);
             destAcc.get().setBalance(destAcc.get().getBalance() + amount);

@@ -19,12 +19,12 @@ public class HbmTracker implements Store {
     public HbmTracker() {
         registry =
                 new StandardServiceRegistryBuilder()
-                .configure()
-                .build();
+                        .configure()
+                        .build();
         sf =
                 new MetadataSources(registry)
-                .buildMetadata()
-                .buildSessionFactory();
+                        .buildMetadata()
+                        .buildSessionFactory();
     }
 
     @Override
@@ -72,6 +72,18 @@ public class HbmTracker implements Store {
         List<Item> result = q.getResultList();
         session.close();
         return result;
+    }
+
+    @Override
+    public void findAllReact(Observe<Item> observe) {
+        Session session = sf.openSession();
+        Transaction tx = session.beginTransaction();
+        String sql = "SELECT * FROM tz_items";
+        Query q = session.createSQLQuery(sql).addEntity(Item.class);
+        tx.commit();
+        List<Item> result = q.getResultList();
+        session.close();
+        result.forEach(observe::receive);
     }
 
     @Override

@@ -65,7 +65,7 @@ public class StartUITest {
     @Test
     public void whenUiAddItem() {
         Input in = new StubInput(
-                new String[] {"1", "Item name", "2"}
+                new String[]{"1", "Item name", "2"}
         );
         Output output = new StubOutput();
         MemTracker tracker = new MemTracker();
@@ -85,7 +85,7 @@ public class StartUITest {
         Item item = tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
         Input in = new StubInput(
-                new String[] {"1", String.valueOf(item.getId()), replacedName, "2"}
+                new String[]{"1", String.valueOf(item.getId()), replacedName, "2"}
         );
         Output output = new StubOutput();
         List<UserAction> actions = Arrays.asList(
@@ -102,7 +102,7 @@ public class StartUITest {
         MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("Deleted item"));
         Input in = new StubInput(
-                new String[] {"1", String.valueOf(item.getId()), "2"}
+                new String[]{"1", String.valueOf(item.getId()), "2"}
         );
         Output output = new StubOutput();
         List<UserAction> actions = Arrays.asList(
@@ -121,7 +121,7 @@ public class StartUITest {
         Item item1 = tracker.add(new Item("Проверка StartUI"));
         Item item2 = tracker.add(new Item("Тест StartUI"));
         Input in = new StubInput(
-                new String[] {"1", "2"}
+                new String[]{"1", "2"}
         );
         Output output = new StubOutput();
         List<UserAction> actions = Arrays.asList(
@@ -132,12 +132,12 @@ public class StartUITest {
         ui.execute();
         String expected =
                 "Меню:" + System.lineSeparator()
-                + "1. Показать все заявки" + System.lineSeparator()
-                + "2. Выход" + System.lineSeparator()
-                + "=== Все заявки ====" + System.lineSeparator()
-                + item1 + System.lineSeparator()
-                + item2 + System.lineSeparator()
-                + "Выключаюсь..." + System.lineSeparator();
+                        + "1. Показать все заявки" + System.lineSeparator()
+                        + "2. Выход" + System.lineSeparator()
+                        + "=== Все заявки ====" + System.lineSeparator()
+                        + item1 + System.lineSeparator()
+                        + item2 + System.lineSeparator()
+                        + "Выключаюсь..." + System.lineSeparator();
         String out = output.toString();
         assertEquals(expected, out);
     }
@@ -148,7 +148,7 @@ public class StartUITest {
         Item item1 = tracker.add(new Item("Проверка StartUI"));
         tracker.add(new Item("Тест StartUI"));
         Input in = new StubInput(
-                new String[] {"1", "Проверка StartUI", "2"}
+                new String[]{"1", "Проверка StartUI", "2"}
         );
         Output output = new StubOutput();
         List<UserAction> actions = Arrays.asList(
@@ -159,11 +159,11 @@ public class StartUITest {
         ui.execute();
         String expected =
                 "Меню:" + System.lineSeparator()
-                + "1. Найти заявки по имени" + System.lineSeparator()
-                + "2. Выход" + System.lineSeparator()
-                + "=== Поиск заявки по имени ====" + System.lineSeparator()
-                + item1 + System.lineSeparator()
-                + "Выключаюсь..." + System.lineSeparator();
+                        + "1. Найти заявки по имени" + System.lineSeparator()
+                        + "2. Выход" + System.lineSeparator()
+                        + "=== Поиск заявки по имени ====" + System.lineSeparator()
+                        + item1 + System.lineSeparator()
+                        + "Выключаюсь..." + System.lineSeparator();
         String out = output.toString();
         assertEquals(expected, out);
     }
@@ -174,7 +174,7 @@ public class StartUITest {
         tracker.add(new Item("item1"));
         Item item2 = tracker.add(new Item("item2"));
         Input in = new StubInput(
-                new String[] {"1", String.valueOf(item2.getId()), "2"}
+                new String[]{"1", String.valueOf(item2.getId()), "2"}
         );
         Output output = new StubOutput();
         List<UserAction> actions = Arrays.asList(
@@ -185,11 +185,11 @@ public class StartUITest {
         ui.execute();
         String expected =
                 "Меню:" + System.lineSeparator()
-                + "1. Найти заявку по ID" + System.lineSeparator()
-                + "2. Выход" + System.lineSeparator()
-                + "=== Поиск заявки по номеру (id) ====" + System.lineSeparator()
-                + item2 + System.lineSeparator()
-                + "Выключаюсь..." + System.lineSeparator();
+                        + "1. Найти заявку по ID" + System.lineSeparator()
+                        + "2. Выход" + System.lineSeparator()
+                        + "=== Поиск заявки по номеру (id) ====" + System.lineSeparator()
+                        + item2 + System.lineSeparator()
+                        + "Выключаюсь..." + System.lineSeparator();
         String out = output.toString();
         assertEquals(expected, out);
     }
@@ -198,7 +198,7 @@ public class StartUITest {
     public void whenInvalidExit() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0", "1"}
+                new String[]{"0", "1"}
         );
         MemTracker tracker = new MemTracker();
         List<UserAction> actions = new ArrayList<>();
@@ -208,9 +208,9 @@ public class StartUITest {
         String ln = System.lineSeparator();
         String expected =
                 "Меню:" + ln
-                + "1. Выход" + ln
-                + "Невыполнимая команда. Допустимый диапазон: 1..1" + ln
-                + "Выключаюсь..." + ln;
+                        + "1. Выход" + ln
+                        + "Невыполнимая команда. Допустимый диапазон: 1..1" + ln
+                        + "Выключаюсь..." + ln;
         String output = out.toString();
         assertEquals(expected, output);
     }

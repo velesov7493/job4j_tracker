@@ -11,7 +11,7 @@ public class ValidateInputTest {
     public void whenInvalidInput() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"one", "1"}
+                new String[]{"one", "1"}
         );
         ValidateInput input = new ValidateInput(in, out);
         int selected = input.askInt("Enter menu:");
@@ -22,7 +22,7 @@ public class ValidateInputTest {
     public void whenNegativeInput() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"-50"}
+                new String[]{"-50"}
         );
         ValidateInput input = new ValidateInput(in, out);
         int selected = input.askInt("Enter menu:");
@@ -33,7 +33,7 @@ public class ValidateInputTest {
     public void whenValidInput() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"40"}
+                new String[]{"40"}
         );
         ValidateInput input = new ValidateInput(in, out);
         int selected = input.askInt("Enter menu:");
@@ -44,7 +44,7 @@ public class ValidateInputTest {
     public void whenMultiInput() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"1", "2", "3", "5", "8", "13", "21", "34", "55"}
+                new String[]{"1", "2", "3", "5", "8", "13", "21", "34", "55"}
         );
         ValidateInput input = new ValidateInput(in, out);
         int[] expected = {1, 2, 3, 5, 8, 13, 21, 34, 55};

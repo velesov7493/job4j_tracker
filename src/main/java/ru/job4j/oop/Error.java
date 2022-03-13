@@ -6,7 +6,8 @@ public class Error {
     private int status;
     private String message;
 
-    public Error() { }
+    public Error() {
+    }
 
     public Error(boolean aActive, int aStatus, String aMessage) {
         active = aActive;

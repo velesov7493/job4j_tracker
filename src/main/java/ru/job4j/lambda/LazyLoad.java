@@ -15,7 +15,7 @@ public class LazyLoad {
             return left.length() - right.length();
         };
         Arrays.sort(names, lengthCmp);
-        for (String name: names) {
+        for (String name : names) {
             System.out.println(name);
         }
     }

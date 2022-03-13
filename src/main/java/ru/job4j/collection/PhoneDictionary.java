@@ -18,6 +18,7 @@ public class PhoneDictionary {
 
     /**
      * Вернуть список всех пользователей, которые содержат key в любых полях.
+     *
      * @param key Ключ поиска.
      * @return Список подощедщих пользователей.
      */
@@ -29,10 +30,10 @@ public class PhoneDictionary {
         Predicate<Person> addressContainsKey = (p) -> p.getAddress().contains(key);
         Predicate<Person> combine = (p) ->
                 nameContainsKey
-                .or(surnameContainsKey)
-                .or(phoneContainsKey)
-                .or(addressContainsKey)
-                .test(p);
+                        .or(surnameContainsKey)
+                        .or(phoneContainsKey)
+                        .or(addressContainsKey)
+                        .test(p);
         for (var entry : persons) {
             if (combine.test(entry)) {
                 result.add(entry);

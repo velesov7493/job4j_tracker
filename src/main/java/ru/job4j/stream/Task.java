@@ -318,24 +318,24 @@ public class Task {
         DateFormat f = new SimpleDateFormat("dd.MM.yyyy");
         return
                 "Task {"
-                + "id=" + id
-                + ", teacherId=" + teacherId
-                + ", studentId=" + studentId
-                + ", disciplineId=" + disciplineId
-                + ", classId=" + classId
-                + ", lessonId=" + lessonId
-                + ", workTypeId=" + workTypeId
-                + ", workNum=" + workNum
-                + ", description='" + description + '\''
-                + ", deadLine=" + f.format(deadLine)
-                + ", issued=" + f.format(issued)
-                + ", done=" + f.format(done)
-                + ", status=" + status
-                + ", mark=" + mark
-                + ", studentComment='" + studentComment + '\''
-                + ", teacherComment='" + teacherComment + '\''
-                + ", studentAttachId=" + studentAttachId
-                + ", teacherAttachId=" + teacherAttachId
-                + '}';
+                        + "id=" + id
+                        + ", teacherId=" + teacherId
+                        + ", studentId=" + studentId
+                        + ", disciplineId=" + disciplineId
+                        + ", classId=" + classId
+                        + ", lessonId=" + lessonId
+                        + ", workTypeId=" + workTypeId
+                        + ", workNum=" + workNum
+                        + ", description='" + description + '\''
+                        + ", deadLine=" + f.format(deadLine)
+                        + ", issued=" + f.format(issued)
+                        + ", done=" + f.format(done)
+                        + ", status=" + status
+                        + ", mark=" + mark
+                        + ", studentComment='" + studentComment + '\''
+                        + ", teacherComment='" + teacherComment + '\''
+                        + ", studentAttachId=" + studentAttachId
+                        + ", teacherAttachId=" + teacherAttachId
+                        + '}';
     }
 }

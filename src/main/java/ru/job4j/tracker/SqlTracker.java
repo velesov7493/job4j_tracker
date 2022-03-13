@@ -13,8 +13,8 @@ public class SqlTracker implements Store {
     public SqlTracker() {
         try (InputStream in =
                      SqlTracker.class
-                     .getClassLoader()
-                     .getResourceAsStream("app.properties")
+                             .getClassLoader()
+                             .getResourceAsStream("app.properties")
         ) {
             Properties config = new Properties();
             config.load(in);
@@ -95,6 +95,21 @@ public class SqlTracker implements Store {
             System.out.println("Ошибка при получении всех элементов: " + ex);
         }
         return result;
+    }
+
+    public void findAllReact(Observe<Item> observe) {
+        String query = "SELECT * FROM tz_items;";
+        try (PreparedStatement st = cn.prepareStatement(query)) {
+            ResultSet s = st.executeQuery();
+            while (s.next()) {
+                Item entry = new Item(s.getInt("id"), s.getString("name"));
+                entry.setCreated(s.getTimestamp("created"));
+                observe.receive(entry);
+            }
+            s.close();
+        } catch (SQLException ex) {
+            System.out.println("Ошибка при получении всех элементов: " + ex);
+        }
     }
 
     @Override

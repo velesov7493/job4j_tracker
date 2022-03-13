@@ -59,9 +59,9 @@ public class Address {
         Address address = (Address) o;
         return
                 home == address.home
-                && apartment == address.apartment
-                && Objects.equals(city, address.city)
-                && Objects.equals(street, address.street);
+                        && apartment == address.apartment
+                        && Objects.equals(city, address.city)
+                        && Objects.equals(street, address.street);
     }
 
     @Override
@@ -72,9 +72,9 @@ public class Address {
     @Override
     public String toString() {
         return "Адрес: "
-               + "г. '" + city + '\''
-               + ", ул. '" + street + '\''
-               + ", д. " + home
-               + ", кв. " + apartment;
+                + "г. '" + city + '\''
+                + ", ул. '" + street + '\''
+                + ", д. " + home
+                + ", кв. " + apartment;
     }
 }

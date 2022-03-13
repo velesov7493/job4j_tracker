@@ -35,7 +35,7 @@ public class Student {
         }
         Student student = (Student) o;
         return score == student.score
-               && Objects.equals(surname, student.surname);
+                && Objects.equals(surname, student.surname);
     }
 
     @Override

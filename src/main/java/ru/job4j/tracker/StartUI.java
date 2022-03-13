@@ -85,7 +85,7 @@ public class StartUI {
         Output out = new ConsoleOutput();
         instance = new StartUI(
                 new ValidateInput(new ConsoleInput(), out),
-                out, new HbmTracker(), null
+                out, new SqlTracker(), null
         );
         instance.execute();
     }

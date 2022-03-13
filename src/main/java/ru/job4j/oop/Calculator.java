@@ -23,7 +23,7 @@ public class Calculator {
     public double sumAllOperations(int y) {
         return
                 sum(y) + multiply(y)
-                + minus(y) + divide(y);
+                        + minus(y) + divide(y);
     }
 
     public static void main(String[] args) {

@@ -9,18 +9,18 @@ public class School {
 
     public List<Student> collect(List<Student> students, Predicate<Student> pred) {
         return students.stream()
-               .filter(pred)
-               .collect(Collectors.toList());
+                .filter(pred)
+                .collect(Collectors.toList());
     }
 
     public Map<String, Student> collectToMap(List<Student> students) {
         return students.stream()
-               .collect(
-                       Collectors.toMap(
-                               e -> e.getSurname(),
-                               e -> e,
-                               (s, a) -> s
-                       )
-               );
+                .collect(
+                        Collectors.toMap(
+                                e -> e.getSurname(),
+                                e -> e,
+                                (s, a) -> s
+                        )
+                );
     }
 }

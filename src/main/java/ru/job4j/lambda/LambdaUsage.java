@@ -17,7 +17,7 @@ public class LambdaUsage {
         Comparator<String> cmpDescSize = (left, right) -> {
             System.out.println(
                     "Сравнение строк по длине по убыванию - "
-                    + left.length() + " : " + right.length()
+                            + left.length() + " : " + right.length()
             );
             return Integer.compare(right.length(), left.length());
         };

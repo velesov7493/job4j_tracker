@@ -24,14 +24,7 @@ public class ShowAllItemsAction implements UserAction {
     @Override
     public boolean execute() {
         output.println("=== Все заявки ====");
-        List<Item> items = tracker.findAll();
-        if (items.isEmpty()) {
-            output.println("Еще нет ни одной заявки.");
-            return false;
-        }
-        for (Item entry : items) {
-            output.println(entry);
-        }
+        tracker.findAllReact(output::println);
         return false;
     }
 }

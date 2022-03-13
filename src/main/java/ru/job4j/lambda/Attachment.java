@@ -21,8 +21,8 @@ public class Attachment {
     @Override
     public String toString() {
         return "{"
-               + "name='" + name + '\''
-               + ", size=" + size
-               + '}';
+                + "name='" + name + '\''
+                + ", size=" + size
+                + '}';
     }
 }

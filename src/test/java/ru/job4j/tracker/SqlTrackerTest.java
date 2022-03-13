@@ -25,15 +25,15 @@ public class SqlTrackerTest {
         String sql = "";
         try (InputStream inSQL =
                      SqlTrackerTest.class
-                     .getClassLoader()
-                     .getResourceAsStream(sqlResourceName)
+                             .getClassLoader()
+                             .getResourceAsStream(sqlResourceName)
         ) {
             if (inSQL != null) {
                 sql = new String(inSQL.readAllBytes(), StandardCharsets.UTF_8);
             }
         } catch (Throwable ex) {
             throw new IllegalStateException(
-                "Критическая ошибка - невозможно прочитать sql-скрипт инициализации!", ex
+                    "Критическая ошибка - невозможно прочитать sql-скрипт инициализации!", ex
             );
         }
         try (
@@ -49,8 +49,8 @@ public class SqlTrackerTest {
     public static void initConnection() {
         try (InputStream in =
                      SqlTrackerTest.class
-                     .getClassLoader()
-                     .getResourceAsStream("app.properties")
+                             .getClassLoader()
+                             .getResourceAsStream("app.properties")
         ) {
             Properties config = new Properties();
             config.load(in);

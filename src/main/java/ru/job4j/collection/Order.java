@@ -19,9 +19,9 @@ public class Order {
     @Override
     public String toString() {
         return "Order{"
-               + "number='" + number + '\''
-               + ", name='" + name + '\''
-               + '}';
+                + "number='" + number + '\''
+                + ", name='" + name + '\''
+                + '}';
     }
 
     @Override
@@ -34,7 +34,7 @@ public class Order {
         }
         Order order = (Order) o;
         return Objects.equals(number, order.number)
-               && Objects.equals(name, order.name);
+                && Objects.equals(name, order.name);
     }
 
     @Override
