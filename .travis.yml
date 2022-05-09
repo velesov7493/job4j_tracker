@@ -4,8 +4,9 @@ env:
     - CODECOV_TOKEN="a63c4119-7fbc-4ad7-a2ef-39cb14a8d6f4"
 
 language: java
+dist: bionic
 jdk:
-  - openjdk16
+  - openjdk14
 
 # используем режим обычного пользователя для сборки проекта.
 sudo: false
